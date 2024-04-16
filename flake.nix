@@ -60,8 +60,8 @@
       #   ];
       #   specialArgs = { inherit inputs; };
       # };
-      "Emmets-Personal-Macbook" = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
+      "Emmet-Personal-Macbook" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
           ./darwin/darwin.nix
           home-manager.darwinModules.home-manager

@@ -34,7 +34,7 @@
   fonts.fontDir.enable = true;
   fonts.fonts = [
     pkgs.monaspace
-    pkgs.atkinson-hyperlegible
+    pkgs.jetbrains-mono
   ];
 
   services = {
@@ -63,11 +63,14 @@
   homebrew = {
     enable = true;
 
+    brews = [
+      "ansible"
+    ];
+
     casks = [
       "1password"
       "bartender"
       "brave-browser"
-      "fantastical"
       "firefox"
       "hammerspoon"
       "karabiner-elements"
@@ -78,10 +81,10 @@
     ];
 
     masApps = {
-      "Drafts" = 1435957248;
-      "Reeder" = 1529448980;
-      "Things" = 904280696;
-      "Timery" = 1425368544;
+      # "Drafts" = 1435957248;
+      # "Reeder" = 1529448980;
+      # "Things" = 904280696;
+      # "Timery" = 1425368544;
     };
   };
 
