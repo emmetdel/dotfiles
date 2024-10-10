@@ -1,5 +1,5 @@
 {
-  description = "Evan's Nix System Configuration";
+  description = "Emmet's Nix System Configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
