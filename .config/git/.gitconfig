@@ -57,7 +57,7 @@
   my-commits = log --author='Emmet Delaney' --author-date-order --date=format:'%a %b %d %r' --format='%h | %ad | %s'
   jump = "!$(brew --prefix git)/share/git-core/contrib/git-jump/git-jump"
 [user]
-  email = emmetdelaney@gmail.com
+  email = emmetdel@gmail.com
   name = Emmet Delaney
 [github]
   user = emmetdelaney

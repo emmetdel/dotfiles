@@ -1,7 +1,7 @@
 # Personal Hammerspoon Setup
 
 Intended to live in `~/.hammerspoon`
-To install: `git clone git@github.com:emmetdelaney/hammerspoon-config.git ~/.hammerspoon`
+To install: `git clone git@github.com:emmetdel/hammerspoon-config.git ~/.hammerspoon`
 
 ## Requirements
 

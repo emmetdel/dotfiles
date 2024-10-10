@@ -10,13 +10,9 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { nixpkgs, darwin, home-manager, nixos-wsl, ... } @ inputs: let
+  outputs = { nixpkgs, darwin, home-manager, ... } @ inputs: let
     darwinSystem = {user, arch ? "aarch64-darwin"}:
       darwin.lib.darwinSystem {
         system = arch;
