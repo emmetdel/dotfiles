@@ -39,25 +39,24 @@
 
   programs = {
     # Use fish
-    fish = {
-      enable = true;
+    # fish = {
+    #   enable = true;
 
-      interactiveShellInit = ''
-        set fish_greeting # N/A
-      '';
+    #   interactiveShellInit = ''
+    #     set fish_greeting # N/A
+    #   '';
 
-      plugins = [
-      ];
-    };
+    #   plugins = [
+    #   ];
+    # };
 
     direnv = {
       enable = true;
-
       nix-direnv.enable = true;
     };
 
-    jujutsu = {
-      enable = true;
-    };
+    # jujutsu = {
+    #   enable = true;
+    # };
   };
 }

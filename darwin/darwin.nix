@@ -67,7 +67,6 @@
       "1password"
       "bartender"
       "brave-browser"
-      "fantastical"
       "firefox"
       "hammerspoon"
       "karabiner-elements"
@@ -78,12 +77,12 @@
       "wezterm"
     ];
 
-    masApps = {
-      "Drafts" = 1435957248;
-      "Reeder" = 1529448980;
-      "Things" = 904280696;
-      "Timery" = 1425368544;
-    };
+    # masApps = {
+    #   "Drafts" = 1435957248;
+    #   "Reeder" = 1529448980;
+    #   "Things" = 904280696;
+    #   "Timery" = 1425368544;
+    # };
   };
 
   system = {

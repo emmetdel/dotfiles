@@ -29,25 +29,29 @@
           }
         ];
       };
+    nixOsSystem = {user, arch ? "x86_64-linux"}:
+      nixpkgs.lib.nixosSystem {
+        system = arch;
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            _module.args = { inherit inputs; };
+            home-manager = {
+              users.${user} = import ./home-manager;
+            };
+            users.users.${user}.home = "/Users/${user}";
+            nix.settings.trusted-users = [ user ];
+          }
+        ];
+      };
   in
   {
-    # nixosConfigurations = {
-    #   nixos = nixpkgs.lib.nixosSystem {
-    #     system = "x86_64-linux";
-    #     modules = [
-    #       nixos-wsl.nixosModules.wsl
-    #       ./nixos/configuration.nix
-    #       ./.config/wsl
-    #       home-manager.nixosModules.home-manager
-    #       {
-    #         home-manager = {
-    #           users.nixos = import ./home-manager;
-    #         };
-    #         nix.settings.trusted-users = [ "nixos" ];
-    #       }
-    #     ];
-    #   };
-    # };
+    nixosConfigurations = {
+      hydra = nixOsSystem {
+        user = "nixos";
+      };
+    };
     darwinConfigurations = {
       "sitenna-macbook-pro" = darwinSystem {
         user = "emmetdelaney";
