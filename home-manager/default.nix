@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./brave-browser.nix
     ./git.nix
     ./helix.nix
     ./nvim
