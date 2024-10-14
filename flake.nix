@@ -49,7 +49,8 @@
   {
     nixosConfigurations = {
       hydra = nixOsSystem {
-        user = "nixos";
+        user = "nixos"
+        ./hosts/hydra/hardware-configuration.nix;
       };
     };
     darwinConfigurations = {

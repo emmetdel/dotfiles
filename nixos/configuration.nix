@@ -8,6 +8,60 @@
   imports = [
   ];
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Set your time zone.
+  time.timeZone = "Europe/Dublin";
+
+  networking.hostName = "hydra"; # Define your hostname.
+
+    # Enable networking
+  networking.networkmanager.enable = true;
+
+    # Select internationalisation properties.
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_IE.UTF-8";
+    LC_IDENTIFICATION = "en_IE.UTF-8";
+    LC_MEASUREMENT = "en_IE.UTF-8";
+    LC_MONETARY = "en_IE.UTF-8";
+    LC_NAME = "en_IE.UTF-8";
+    LC_NUMERIC = "en_IE.UTF-8";
+    LC_PAPER = "en_IE.UTF-8";
+    LC_TIME = "en_IE.UTF-8";
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "gb";
+    variant = "";
+  };
+  
+
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # List packages installed in system profile. To search, run:
+  environment.systemPackages = with pkgs; [
+    wget
+    git
+    neovim
+    helix
+    just
+    vscode
+  ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
@@ -18,9 +72,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Install firefox.
+  programs.firefox.enable = true;
   programs.fish.enable = true;
 
-  users.defaultUserShell = pkgs.fish;
+  # enable services
+  services.openssh.enable = true;
 
-  time.timeZone = "Europe/Dublin";
+  users.defaultUserShell = pkgs.fish;
 }
