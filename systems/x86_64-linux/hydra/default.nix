@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     # Any particular packages only for this host
+    just
   ];
 
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
