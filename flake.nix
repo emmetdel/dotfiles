@@ -1,65 +1,45 @@
 {
-  description = "Emmet's Nix System Configuration";
+  description = "Emmet's NixOS configuration";
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    # The name "snowfall-lib" is required due to how Snowfall Lib processes your
+    # flake's inputs.
+    snowfall-lib = {
+      url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { nixpkgs, darwin, home-manager, ... } @ inputs: let
-    darwinSystem = {user, arch ? "aarch64-darwin"}:
-      darwin.lib.darwinSystem {
-        system = arch;
-        modules = [
-          ./darwin/darwin.nix
-          home-manager.darwinModules.home-manager
-          {
-            _module.args = { inherit inputs; };
-            home-manager = {
-              users.${user} = import ./home-manager;
-            };
-            users.users.${user}.home = "/Users/${user}";
-            nix.settings.trusted-users = [ user ];
-          }
-        ];
-      };
-    nixOsSystem = {user, arch ? "x86_64-linux"}:
-      nixpkgs.lib.nixosSystem {
-        system = arch;
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            _module.args = { inherit inputs; };
-            home-manager = {
-              users.${user} = import ./home-manager;
-            };
-            users.users.${user}.home = "/Users/${user}";
-            nix.settings.trusted-users = [ user ];
-          }
-        ];
-      };
-  in
-  {
-    nixosConfigurations = {
-      hydra = nixOsSystem {
-        user = "nixos"
-        ./hosts/hydra/hardware-configuration.nix;
+
+  outputs = inputs:
+    inputs.snowfall-lib.mkFlake {
+      # You must provide our flake inputs to Snowfall Lib.
+      inherit inputs;
+
+      # The `src` must be the root of the flake. See configuration
+      # in the next section for information on how you can move your
+      # Nix files to a separate directory.
+      src = ./.;
+
+      # Configure Snowfall Lib, all of these settings are optional.
+      snowfall = {
+        # Tell Snowfall Lib to look in the `./nix/` directory for your
+        # Nix files.
+        root = ./nix;
+
+        # Choose a namespace to use for your flake's packages, library,
+        # and overlays.
+        namespace = "dotfiles";
+
+        # Add flake metadata that can be processed by tools like Snowfall Frost.
+        meta = {
+          # A slug to use in documentation when displaying things like file paths.
+          name = "dotfiles";
+
+          # A title to show for your flake, typically the name.
+          title = "Dotfiles";
+        };
       };
     };
-    darwinConfigurations = {
-      "sitenna-macbook-pro" = darwinSystem {
-        user = "emmetdelaney";
-      };
-      "personal-macbook-pro" = darwinSystem {
-        user = "emmetdelaney";
-      };
-    };
-  };
 }
