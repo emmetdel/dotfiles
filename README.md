@@ -1,25 +1,12 @@
 # Dotfiles
 
-Dotfiles for my NixOS and Darwin systems.
-
-Featuring:
-
-- Wezterm
-- Tmux
-- Fish
-- Neovim
-- OSX
-  - darwin-nix
-  - Hammerspoon
-  - homebrew mas
-  - yabai
+Dotfiles for my NixOS and Darwin systems using snowflake.
 
 ## Install Nix
 
 On OSX: [Determinate Systems Installer](https://github.com/DeterminateSystems/nix-installer).
 
 ### NixOS
-
 
 ```bash
 # Installing:

@@ -10,6 +10,28 @@
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Snowfall Flake
+    snowfall-flake = {
+      url = "github:snowfallorg/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Weekly updating nix-index database
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # NixPkgs (nixos-unstable)
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+
+    # NixPkgs (nixpkgs-unstable)
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    };
   };
 
   outputs = inputs:
@@ -30,12 +52,12 @@
 
         # Choose a namespace to use for your flake's packages, library,
         # and overlays.
-        namespace = "dotfiles";
+        namespace = "emmet-dotfiles";
 
         # Add flake metadata that can be processed by tools like Snowfall Frost.
         meta = {
           # A slug to use in documentation when displaying things like file paths.
-          name = "dotfiles";
+          name = "emmet-dotfiles";
 
           # A title to show for your flake, typically the name.
           title = "Dotfiles";
