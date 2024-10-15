@@ -1,31 +1,47 @@
-# Dotfiles
+<h1 align="center"> <img src="./.github/assets/flake.webp" width="250px"/></h1>
+<h2 align="center">My NixOS flake template made with <a href="https://github.com/snowfallorg/lib">snowfall</a>.</h2>
 
-Dotfiles for my NixOS and Darwin systems using snowflake.
+<h1 align="center">
+<a href='#'><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px"/></a>
+  <br>
+  <br>
+  <div>
+    <a href="https://github.com/Iogamaster/snowfall-starter/issues">
+        <img src="https://img.shields.io/github/issues/Iogamaster/snowfall-starter?color=fab387&labelColor=303446&style=for-the-badge">
+    </a>
+    <a href="https://github.com/Iogamaster/snowfall-starter/stargazers">
+        <img src="https://img.shields.io/github/stars/Iogamaster/snowfall-starter?color=ca9ee6&labelColor=303446&style=for-the-badge">
+    </a>
+    <a href="https://github.com/Iogamaster/snowfall-starter">
+        <img src="https://img.shields.io/github/repo-size/Iogamaster/snowfall-starter?color=ea999c&labelColor=303446&style=for-the-badge">
+    </a>
+    <a href="https://github.com/Iogamaster/snowfall-starter/blob/main/.github/LICENCE">
+        <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
+    </a>
+    <br>
+    </div>
+        <img href="https://builtwithnix.org" src="https://builtwithnix.org/badge.svg"/>
+   </h1>
+   <br>
 
-## Install Nix
+## My system management tool `sys`
 
-On OSX: [Determinate Systems Installer](https://github.com/DeterminateSystems/nix-installer).
+`sys` is a bash script I made that makes working with NixOS easier.
 
-### NixOS
+Rebuild (in flake directory)
 
-```bash
-# Installing:
-sudo nixos-install --flake github:emmetdel/dotfiles#nixos
+```sh
+sudo sys rebuild # or `r` as a shorthand
 ```
 
-```bash
-# Rebuilding:
-sudo nixos-rebuild switch --flake github:emmetdel/dotfiles#nixos
+Testing an ephemeral config:
+
+```sh
+sudo sys test # or `t` as a shorthand
 ```
 
-```bash
-# Upgrading:
-sudo nixos-rebuild upgrade --flake github:emmetdel/dotfiles#nixos
-```
+Deploying to a server (in flake directory):
 
-### Darwin/Linux
-
-```bash
-# Installing:
-nix run nix-darwin -- switch --flake github:emmetdel/dotfiles
+```sh
+sudo sys deploy HOSTNAME # or `d` as a shorthand
 ```

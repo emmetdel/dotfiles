@@ -1,20 +1,19 @@
-{
-  config,
-  lib,
-  namespace,
-  ...
-}:
-let
-  inherit (lib.${namespace}) enabled;
-in
-{
-  imports = [
-    ./hardware.nix
+{pkgs, ...}: {
+  imports = [./hardware.nix];
+
+  # Enable Bootloader
+  system.boot.efi.enable = true;
+  # system.boot.bios.enable = true;
+
+  # system.battery.enable = true; # Only for laptops, they will still work without it, just improves battery life
+
+  environment.systemPackages = with pkgs; [
+    # Any particular packages only for this host
   ];
 
-  emmet-dotfiles = {
-    nix = enabled;
-  }
+  suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
 
-system.stateVersion = "21.11"; # Did you read the comment?
+  # ======================== DO NOT CHANGE THIS ========================
+  system.stateVersion = "22.11";
+  # ======================== DO NOT CHANGE THIS ========================
 }
