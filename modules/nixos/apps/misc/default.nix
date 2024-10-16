@@ -22,6 +22,7 @@ in {
       eza
       fzf
       fd
+      just
 
       # Util
       unzip

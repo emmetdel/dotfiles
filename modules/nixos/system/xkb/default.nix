@@ -15,8 +15,10 @@ in {
   config = mkIf cfg.enable {
     console.useXkbConfig = true;
     services.xserver = {
-      layout = "us";
+      layout = "gb";
       xkbOptions = "caps:escape";
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
   };
 }

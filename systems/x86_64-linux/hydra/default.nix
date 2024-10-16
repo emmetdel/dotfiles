@@ -1,15 +1,34 @@
 {pkgs, ...}: {
   imports = [./hardware.nix];
 
-  # Enable Bootloader
-  system.boot.efi.enable = true;
-  # system.boot.bios.enable = true;
+  system = {
+    # Enable Bootloader
+    boot.efi.enable = true;
 
-  # system.battery.enable = true; # Only for laptops, they will still work without it, just improves battery life
+    # Set environment variables
+    env.enable = true;
+
+    # Set nix
+    nix.enable = true;
+
+    # Set shell
+    shell.enable = true;
+  };
+
+
+  apps = {
+    misc.enable = true;
+    tools.git.enable = true;
+    tools.direnv.enable = true;
+    tools.lazygit.enable = true;
+    tools.commitizen.enable = true;
+  };
+
 
   environment.systemPackages = with pkgs; [
     # Any particular packages only for this host
     just
+
   ];
 
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
