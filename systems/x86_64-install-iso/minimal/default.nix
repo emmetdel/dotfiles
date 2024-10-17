@@ -5,11 +5,12 @@ _: {
 
   # Disable wpa_supplicant
   networking.wireless.enable = false;
+  
   # Enable NetworkManager
   networking.networkmanager.enable = true;
 
+  # Enable common modules
   suites.common.enable = true;
-  services.ssh.enable = true;
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "24.05";
 }

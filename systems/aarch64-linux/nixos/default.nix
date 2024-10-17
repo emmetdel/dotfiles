@@ -10,5 +10,5 @@
 
   suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "24.05";
 }
