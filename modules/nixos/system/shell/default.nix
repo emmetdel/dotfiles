@@ -22,8 +22,10 @@ in {
       starship
     ];
 
+    programs.zsh.enable = true;
+
     users.defaultUserShell = pkgs.${cfg.shell};
-    users.users.root.shell = pkgs.bashInteractive;
+    users.users.root.shell = pkgs.zsh;
 
     home.programs.starship = {
       enable = true;
