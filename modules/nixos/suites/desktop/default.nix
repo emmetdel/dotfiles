@@ -23,7 +23,7 @@ in {
 
     suites.common.enable = true;
 
-    services.flatpak.enable = true;
+    # services.flatpak.enable = true;
 
     services.xserver = {
       enable = true;
@@ -31,9 +31,9 @@ in {
       desktopManager.gnome.enable = true;
     };
 
-    environment.persist.directories = [
-      "/etc/gdm"
-    ];
+    # environment.persist.directories = [
+    #   "/etc/gdm"
+    # ];
 
     environment.systemPackages = with pkgs; [
       cinnamon.nemo
