@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.system.shell;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nushell" "fish"]) "nushell" "What shell to use";
+    shell = mkOpt (enum ["nushell" "fish" "zsh"]) "zsh" "What shell to use";
   };
 
   config = {
@@ -27,8 +27,7 @@ in {
 
     home.programs.starship = {
       enable = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
     home.configFile."starship.toml".source = ./starship.toml;
 
@@ -43,22 +42,22 @@ in {
     };
 
     # Actual Shell Configurations
-    home.programs.fish = mkIf (cfg.shell == "fish") {
+    home.programs.zsh = mkIf (cfg.shell == "zsh") {
       enable = true;
       shellAliases = {
         ls = "eza -la --icons --no-user --no-time --git -s type";
         cat = "bat";
       };
-      shellInit = ''
+      initExtra = ''
         ${mkIf apps.tools.direnv.enable ''
-          direnv hook fish | source
+          eval "$(direnv hook zsh)"
         ''}
 
-        zoxide init fish | source
+        eval "$(zoxide init zsh)"
 
-        function , --description 'add software to shell session'
-              nix shell nixpkgs#$argv[1..-1]
-        end
+        function , () {
+          nix shell nixpkgs#"$@"
+        }
       '';
     };
 
