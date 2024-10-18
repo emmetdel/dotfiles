@@ -16,11 +16,10 @@ in {
     services.openssh = {
       enable = true;
       ports = [22];
-      # PermitRootLogin = "prohibit-password";
     };
 
     users.users = let 
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8FgRH4auak56a+6sqKbIt7EfFUBScSmWptqZbRF4W5 emmetdel@gmail.com"; # Enter your ssh public key
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8FgRH4auak56a+6sqKbIt7EfFUBScSmWptqZbRF4W5"; # Enter your ssh public key
     in
     {
       root.openssh.authorizedKeys.keys = [

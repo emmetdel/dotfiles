@@ -1,39 +1,20 @@
 {pkgs, ...}: {
   imports = [./hardware.nix];
 
-  system = {
-    # Enable Bootloader
-    boot.efi.enable = true;
+  # Enable Bootloader
+  system.boot.efi.enable = true;
 
-    # Set environment variables
-    env.enable = true;
+  # Enable XKB windowing system
+  system.xkb.enable = true;
 
-    # Set nix
-    nix.enable = true;
+  # Enable misc apps
+  apps.misc.enable = true;
 
-    # Set shell
-    shell.enable = true;
-  };
+  # Enable NetworkManager
+  networking.networkmanager.enable = true;
 
+  # Enables the basics, like audio, networking, ssh, etc.
+  suites.common.enable = true; 
 
-  apps = {
-    misc.enable = true;
-    tools.git.enable = true;
-    tools.direnv.enable = true;
-    tools.lazygit.enable = true;
-    tools.commitizen.enable = true;
-  };
-
-
-  environment.systemPackages = with pkgs; [
-    # Any particular packages only for this host
-    just
-
-  ];
-
-  suites.common.enable = true; # Enables the basics, like audio, networking, ssh, etc.
-
-  # ======================== DO NOT CHANGE THIS ========================
   system.stateVersion = "24.05";
-  # ======================== DO NOT CHANGE THIS ========================
 }
