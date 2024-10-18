@@ -19,9 +19,9 @@ in {
       package = pkgs.librewolf;
     };
 
-    home.persist.directories = [
-      ".librewolf"
-      ".cache/librewolf"
-    ];
+    # home.persist.directories = [
+    #   ".librewolf"
+    #   ".cache/librewolf"
+    # ];
   };
 }
