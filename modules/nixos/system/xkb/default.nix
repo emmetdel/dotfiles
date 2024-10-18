@@ -14,7 +14,9 @@ in {
 
   config = mkIf cfg.enable {
     console.useXkbConfig = true;
+
     services.xserver = {
+      enable = true;
       layout = "gb";
       xkbOptions = "caps:escape";
       displayManager.gdm.enable = true;
