@@ -49,18 +49,6 @@ in {
         ls = "eza -la --icons --no-user --no-time --git -s type";
         cat = "bat";
       };
-      # zsh
-      # initExtra = ''
-      #   ${mkIf apps.tools.direnv.enable ''
-      #     eval "$(direnv hook zsh)"
-      #   ''}
-
-      #   eval "$(zoxide init zsh)"
-
-      #   function , () {
-      #     nix shell nixpkgs#"$@"
-      #   }
-      # '';
     };
 
     # Enable all if nushell

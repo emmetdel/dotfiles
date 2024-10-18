@@ -16,11 +16,8 @@ in {
     console.useXkbConfig = true;
 
     services.xserver = {
-      enable = true;
       layout = "gb";
       xkbOptions = "caps:escape";
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
     };
   };
 }
