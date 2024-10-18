@@ -40,7 +40,6 @@ in {
 
     home.programs.zoxide = {
       enable = true;
-      enableNushellIntegration = true;
     };
 
     # Actual Shell Configurations
