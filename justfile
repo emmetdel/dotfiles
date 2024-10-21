@@ -9,7 +9,7 @@ switch flags="": git-add
     nix run -- nix-darwin switch --flake $HOME/dotfiles {{flags}}
 
 trace: (switch "--show-trace")
-    
+
 home: git-add
     nix run -- home-manager switch --flake $HOME/dotfiles#$(hostname)
 
