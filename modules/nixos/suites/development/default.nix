@@ -14,7 +14,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # editors
     apps.neovim.enable = true;
+    apps.cursor.enable = true;
     apps.tools.git.enable = true;
     apps.misc.enable = true;
 
