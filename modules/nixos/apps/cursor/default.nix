@@ -20,9 +20,9 @@ in {
         code-cursor
     ];
 
-    home.programs.cursor = {
+    home.programs.code-cursor = {
       enable = true;
-      package = pkgs.cursor;
+      package = pkgs.code-cursor;
     };
   };
 }
