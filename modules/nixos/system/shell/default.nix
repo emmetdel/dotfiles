@@ -34,8 +34,7 @@ in {
     home.configFile."starship.toml".source = ./starship.toml;
 
     environment.shellAliases = {
-      ".." = "cd ..";
-      neofetch = "nitch";
+
     };
 
     home.programs.zoxide = {
@@ -48,23 +47,11 @@ in {
       shellAliases = {
         ls = "eza -la --icons --no-user --no-time --git -s type";
         cat = "bat";
+        rebuild = "sudo nixos-rebuild switch --flake $HOME/dotfiles";
+        ".." = "cd ..";
+        neofetch = "nitch";
       };
     };
 
-    # Enable all if nushell
-    home.programs.nushell = mkIf (cfg.shell == "nushell") {
-      enable = true;
-      shellAliases = config.environment.shellAliases // {ls = "ls";};
-      envFile.text = "";
-      extraConfig = ''
-        $env.config = {
-        	show_banner: false,
-        }
-
-        def , [...packages] {
-            nix shell ($packages | each {|s| $"nixpkgs#($s)"})
-        }
-      '';
-    };
   };
 }

@@ -15,6 +15,11 @@ in {
 
   config = mkIf cfg.enable {
     apps.neovim.enable = true;
+    apps.tools.git.enable = true;
 
+    # packages to install system-wide
+    environment.systemPackages = with pkgs; [
+        
+    ];
   };
 }

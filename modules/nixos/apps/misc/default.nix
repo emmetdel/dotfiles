@@ -16,8 +16,6 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # Development
-      git
-      git-remote-gcrypt
       bat
       eza
       fzf

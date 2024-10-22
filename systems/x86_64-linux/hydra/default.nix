@@ -14,7 +14,7 @@
   networking.networkmanager.enable = true;
 
   # Enables the basics, like audio, networking, ssh, etc.
-  suites.common.enable = true; 
+  suites.common.enable = true;
   suites.desktop.enable = true;
   suites.development.enable = true;
 
