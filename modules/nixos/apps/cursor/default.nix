@@ -13,11 +13,13 @@ in {
     enable = mkBoolOpt false "Enable or disable cursor code editor";
   };
 
-  environment.systemPackages = with pkgs; [
-    code-cursor
-  ];
 
   config = mkIf cfg.enable {
+
+    environment.systemPackages = with pkgs; [
+        code-cursor
+    ];
+
     home.programs.cursor = {
       enable = true;
       package = pkgs.cursor;
