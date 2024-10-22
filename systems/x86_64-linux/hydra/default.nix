@@ -7,9 +7,6 @@
   # Enable XKB windowing system
   system.xkb.enable = true;
 
-  # Enable misc apps
-  apps.misc.enable = true;
-
   # Enable NetworkManager
   networking.networkmanager.enable = true;
 
