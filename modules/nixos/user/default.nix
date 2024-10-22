@@ -44,8 +44,6 @@ in
       mkOpt attrs { }
         "Extra options passed to <option>users.users.<name></option>.";
 
-    # Added fullname option
-    fullname = mkOpt (nullOr str) "Emmet Delaney" "The full name of the user.";
   };
 
   config = {
@@ -73,7 +71,7 @@ in
     users.users.${cfg.name} =
       {
         isNormalUser = true;
-        inherit (cfg) name initialPassword fullname;
+        inherit (cfg) name initialPassword;
         home = "/home/${cfg.name}";
         group = "users";
 
