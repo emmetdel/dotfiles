@@ -33,7 +33,7 @@ in {
       g = "lazygit";
     };
 
-    home.configFile."git/config".text = import ./config.nix {sshKeyPath = "/home/${config.user.name}/.ssh/key.pub"; name = ""; email = "";};
+    home.configFile."git/config".text = import ./config.nix {sshKeyPath = "/home/${config.user.name}/.ssh/key.pub"; name = "Emmet Delaney"; email = "emmetdel@gmail.com";};
     home.configFile."lazygit/config.yml".source = ./lazygitConfig.yml;
   };
 }
