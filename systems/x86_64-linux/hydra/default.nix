@@ -16,6 +16,7 @@
   # Enables the basics, like audio, networking, ssh, etc.
   suites.common.enable = true; 
   suites.desktop.enable = true;
+  suites.development.enable = true;
 
   system.stateVersion = "24.05";
 }
