@@ -45,7 +45,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "emmetdelaney";
     homeDirectory = "/home/emmetdelaney";
@@ -58,6 +57,7 @@
     brave
     vscode
     obsidian
+    git
   ];
 
   # Enable home-manager and git
