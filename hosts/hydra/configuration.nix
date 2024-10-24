@@ -80,7 +80,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8FgRH4auak56a+6sqKbIt7EfFUBScSmWptqZbRF4W5"
       ];
-      extraGroups = ["wheel", "docker", "video", "audio", "networkmanager"];
+      extraGroups = ["wheel" "docker" "video" "audio" "networkmanager"];
     };
   };
 
