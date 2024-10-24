@@ -68,8 +68,7 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = ["/dev/sda"];
+  # Use systemd-boot for UEFI systems
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
