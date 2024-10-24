@@ -68,8 +68,6 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # FIXME: Add the rest of your current configuration
-
   networking.hostName = "hydra";
 
   users.users = {
