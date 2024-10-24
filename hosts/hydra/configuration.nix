@@ -68,11 +68,19 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = ["/dev/sda"];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # set gnome as default desktop environment
+  services.xserver.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
   networking.hostName = "hydra";
 
   users.users = {
     emmetdelaney = {
-      # TODO: You can set an initial password for your user.
       initialPassword = "pass1234";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
