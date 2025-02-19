@@ -9,6 +9,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # nix-darwin
+    nix-darwin.url = "github:lnx-nix/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -47,28 +51,56 @@
     # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
 
+    # nix darwin
+    darwinModules = import ./modules/darwin;
+
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      hydra = nixpkgs.lib.nixosSystem {
+      hydra = nixpkgs.lib.nixosSystem { # Hydra Desktop
         specialArgs = {inherit inputs outputs;};
         modules = [
-          # > Our main nixos configuration file <
           ./hosts/hydra/configuration.nix
         ];
       };
+      theia = nixpkgs.lib.nixosSystem { # Theia Router/Firewall
+        specialArgs = {inherit inputs outputs;};
+        system = "aarch64-linux"; #TODO: Change to x86_64-linux when ready to deploy
+        modules = [
+          (import ./hosts/theia/configuration.nix { username = "emmetdelaney"; })
+        ];
+      };
+      aurora = nixpkgs.lib.nixosSystem { # Main Server
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/aurora/configuration.nix
+        ];
+      };
+      eos = nixpkgs.lib.nixosSystem { # Monitoring (Raspberry Pi)
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/eos/configuration.nix
+        ];
+      };
+
+
     };
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "emmetdelaney@hydra" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+    nixDarwinConfigurations = {
+      "Emmet-Work-Macbook" = inputs.nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/home.nix
+          ./hosts/Emmet-Work-Macbook/darwin-configuration.nix
         ];
+        specialArgs = {inherit inputs outputs;};
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      };
+      "Emmet-Personal-Macbook" = inputs.nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/Emmet-Personal-Macbook/darwin-configuration.nix
+        ];
+        specialArgs = {inherit inputs outputs;};
       };
     };
   };
