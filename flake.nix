@@ -67,7 +67,7 @@
         specialArgs = {inherit inputs outputs;};
         system = "aarch64-linux"; #TODO: Change to x86_64-linux when ready to deploy
         modules = [
-          (import ./hosts/theia/configuration.nix { username = "emmetdelaney"; })
+          ./hosts/theia/configuration.nix
         ];
       };
       aurora = nixpkgs.lib.nixosSystem { # Main Server
