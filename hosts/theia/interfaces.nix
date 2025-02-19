@@ -3,7 +3,7 @@
     wan = {
       pppoe.enable = true;
       pppoe.username = "digiweb@siro.digiweb.ie";
-      pppoe.password = ""; # TODO: Add password
+      pppoe.password = "";
       ipv4.method = "pppoe";
     };
     lan = {
