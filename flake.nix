@@ -57,33 +57,36 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      hydra = nixpkgs.lib.nixosSystem { # Hydra Desktop
+      hydra = nixpkgs.lib.nixosSystem {
+        # Hydra Desktop
         specialArgs = {inherit inputs outputs;};
+        system = "aarch64-linux";
         modules = [
           ./hosts/hydra/configuration.nix
         ];
       };
-      theia = nixpkgs.lib.nixosSystem { # Theia Router/Firewall
+      theia = nixpkgs.lib.nixosSystem {
+        # Theia Router/Firewall
         specialArgs = {inherit inputs outputs;};
         system = "aarch64-linux"; #TODO: Change to x86_64-linux when ready to deploy
         modules = [
           ./hosts/theia/configuration.nix
         ];
       };
-      aurora = nixpkgs.lib.nixosSystem { # Main Server
+      aurora = nixpkgs.lib.nixosSystem {
+        # Main Server
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/aurora/configuration.nix
         ];
       };
-      eos = nixpkgs.lib.nixosSystem { # Monitoring (Raspberry Pi)
+      eos = nixpkgs.lib.nixosSystem {
+        # Monitoring (Raspberry Pi)
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/eos/configuration.nix
         ];
       };
-
-
     };
 
     nixDarwinConfigurations = {
