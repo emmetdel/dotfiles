@@ -34,6 +34,9 @@
 
   # Define a user account
   users.users.emmetdelaney = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    group = "emmetdelaney";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8FgRH4auak56a+6sqKbIt7EfFUBScSmWptqZbRF4W5"
     ];
