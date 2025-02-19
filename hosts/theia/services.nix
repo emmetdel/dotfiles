@@ -36,29 +36,29 @@
   };
 
   # Cloudflare Tunnel
-  services.cloudflared = {
-    enable = true;
-    tunnels = {
-      "home-tunnel" = {
-        credentialsFile = "/var/lib/cloudflared/tunnel-credentials.json";
-        default = "http_status:404";
-        ingress = {
-          # Add your ingress rules here
-          # Example:
-          # "subdomain.yourdomain.com" = "http://localhost:8080";
-        };
-      };
-    };
-  };
+  # services.cloudflared = {
+  #   enable = true;
+  #   tunnels = {
+  #     "home-tunnel" = {
+  #       credentialsFile = "/var/lib/cloudflared/tunnel-credentials.json";
+  #       default = "http_status:404";
+  #       ingress = {
+  #         # Add your ingress rules here
+  #         # Example:
+  #         # "subdomain.yourdomain.com" = "http://localhost:8080";
+  #       };
+  #     };
+  #   };
+  # };
 
   # UniFi Controller
-  services.unifi = {
-    enable = true;
-    unifiPackage = pkgs.unifi7;
-    openFirewall = true;
-    # MongoDB is required for UniFi
-    mongodbPackage = pkgs.mongodb;
-  };
+  # services.unifi = {
+  #   enable = true;
+  #   unifiPackage = pkgs.unifi7;
+  #   openFirewall = true;
+  #   # MongoDB is required for UniFi
+  #   mongodbPackage = pkgs.mongodb;
+  # };
 
   # Open required ports
   networking.firewall = {
