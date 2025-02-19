@@ -54,7 +54,7 @@
   # UniFi Controller
   services.unifi = {
     enable = true;
-    unifiPackage = pkgs.unifi8;
+    unifiPackage = pkgs.unifi7;
     openFirewall = true;
     # MongoDB is required for UniFi
     mongodbPackage = pkgs.mongodb;
