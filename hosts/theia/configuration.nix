@@ -3,7 +3,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # ./interfaces.nix
-    ./services.nix
+    # ./services.nix
   ];
 
   # Enable flakes
