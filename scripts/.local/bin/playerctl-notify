@@ -1,0 +1,30 @@
+#!/bin/bash
+# Wrapper script to change tracks and show track info with swayosd
+
+ACTION="$1"
+
+# Get the focused monitor for OSD
+MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
+
+# Perform the action
+playerctl "$ACTION"
+
+# Wait for the track to change
+sleep 0.3
+
+# Get track info
+ARTIST=$(playerctl metadata artist 2>/dev/null)
+TITLE=$(playerctl metadata title 2>/dev/null)
+
+# Build message
+if [ -n "$TITLE" ]; then
+    if [ -n "$ARTIST" ]; then
+        MESSAGE="$ARTIST - $TITLE"
+    else
+        MESSAGE="$TITLE"
+    fi
+    
+    # Show swayosd with custom message and music icon
+    swayosd-client --monitor "$MONITOR" --custom-message "$MESSAGE" --custom-icon "media-playback-start"
+fi
+
